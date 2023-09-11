@@ -1,0 +1,30 @@
+{
+  "name": "rbxts-react-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rbxtsc",
+    "watch": "rbxtsc -w"
+  },
+  "devDependencies": {
+    "@rbxts/compiler-types": "^2.1.1-types.0",
+    "@rbxts/types": "^1.0.712",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-roblox-ts": "^0.0.35",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@rbxts/react-roblox": "^0.2.0",
+    "@rbxts/ripple": "^0.6.0",
+    "@rbxts/roact": "npm:@rbxts/react-ts",
+    "@rbxts/services": "^1.5.1"
+  }
+}
