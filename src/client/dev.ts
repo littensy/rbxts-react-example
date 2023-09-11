@@ -1,3 +1,7 @@
+import { RunService } from "@rbxts/services";
+
 declare const _G: Record<string, unknown>;
 
-_G.__DEV__ = true;
+if (RunService.IsStudio()) {
+	_G.__DEV__ = true;
+}
