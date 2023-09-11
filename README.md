@@ -15,5 +15,5 @@ https://www.roblox.com/games/14747634789/
 
 ### ✏️ Notes
 
--   This example uses [`@rbxts/roblox-react`](https://github.com/littensy/rbxts-react#-reactroblox) for rendering.
+-   This example uses [`@rbxts/react-roblox`](https://github.com/littensy/rbxts-react#-reactroblox) for rendering.
 -   React is accessed through an alias, `@rbxts/roact`, to avoid conflicts with Roblox-TS compiler.
