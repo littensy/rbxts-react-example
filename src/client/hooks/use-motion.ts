@@ -1,25 +1,26 @@
+import { useEventListener } from "@rbxts/pretty-react-hooks";
 import { createMotion, Motion, MotionGoal } from "@rbxts/ripple";
-import { Binding, useBinding, useEffect, useMemo } from "@rbxts/roact";
+import { Binding, useBinding, useMemo } from "@rbxts/roact";
+import { RunService } from "@rbxts/services";
 
-export function useMotion(goal: number): LuaTuple<[Binding<number>, Motion<number>]>;
+export function useMotion(initialValue: number): LuaTuple<[Binding<number>, Motion]>;
 
-export function useMotion<T extends MotionGoal>(goal: T): LuaTuple<[Binding<T>, Motion<T>]>;
+export function useMotion<T extends MotionGoal>(initialValue: T): LuaTuple<[Binding<T>, Motion<T>]>;
 
-export function useMotion<T extends MotionGoal>(goal: T) {
+export function useMotion<T extends MotionGoal>(initialValue: T) {
 	const motion = useMemo(() => {
-		return createMotion(goal, { start: true });
+		return createMotion(initialValue);
 	}, []);
 
-	const [binding, setValue] = useBinding(motion.get());
+	const [binding, setValue] = useBinding(initialValue);
 
-	useEffect(() => {
-		const disconnect = motion.onStep(setValue);
+	useEventListener(RunService.Heartbeat, (delta) => {
+		const value = motion.step(delta);
 
-		return () => {
-			disconnect();
-			motion.destroy();
-		};
-	}, []);
+		if (value !== binding.getValue()) {
+			setValue(value);
+		}
+	});
 
 	return $tuple(binding, motion);
 }

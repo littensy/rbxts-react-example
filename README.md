@@ -10,8 +10,8 @@ https://www.roblox.com/games/14747634789/
 
 ### 📖 Usage
 
-- Install the [Roblox-TS Extension](https://marketplace.visualstudio.com/items?itemName=Roblox-TS.vscode-roblox-ts)
-- Install the [Rojo Extension](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo)
+-   Install the [Roblox-TS Extension](https://marketplace.visualstudio.com/items?itemName=Roblox-TS.vscode-roblox-ts)
+-   Install the [Rojo Extension](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo)
 
 ### ✏️ Notes
 
