@@ -1,7 +1,7 @@
-import Roact, { useEffect, useState } from "@rbxts/roact";
+import React, { useEffect, useState } from "@rbxts/react";
 import { useMotion } from "client/hooks/use-motion";
-import { useRem } from "client/hooks/use-rem";
-import { brighten } from "client/utils/colors";
+import { usePx } from "client/hooks/use-px";
+import { brighten } from "client/utils/color-utils";
 import { fonts } from "client/utils/fonts";
 import { palette } from "client/utils/palette";
 import { springs } from "client/utils/springs";
@@ -16,7 +16,7 @@ interface ButtonProps {
 	size?: UDim2;
 	position?: UDim2;
 	anchorPoint?: Vector2;
-	children?: Roact.Children;
+	children?: React.ReactNode;
 }
 
 export function Button({
@@ -31,36 +31,37 @@ export function Button({
 	anchorPoint,
 	children,
 }: ButtonProps) {
-	const rem = useRem();
+	const px = usePx();
+
 	const [pressed, setPressed] = useState(false);
 	const [hovered, setHovered] = useState(false);
+
 	const [buttonPosition, buttonPositionMotion] = useMotion(0);
 	const [buttonColor, buttonColorMotion] = useMotion(backgroundColor);
 
 	useEffect(() => {
 		if (pressed) {
-			buttonPositionMotion.spring(rem(0.5), springs.responsive);
+			buttonPositionMotion.spring(px(8), springs.responsive);
 			buttonColorMotion.spring(brighten(backgroundColor, -0.1), springs.responsive);
 		} else if (hovered) {
-			buttonPositionMotion.spring(rem(-0.5), springs.responsive);
+			buttonPositionMotion.spring(-px(8), springs.responsive);
 			buttonColorMotion.spring(brighten(backgroundColor, 0.1), springs.responsive);
 		} else {
 			buttonPositionMotion.spring(0, springs.responsive);
 			buttonColorMotion.spring(backgroundColor, springs.responsive);
 		}
-	}, [pressed, hovered, backgroundColor, rem]);
+	}, [pressed, hovered, backgroundColor, px]);
 
 	useEffect(() => {
 		if (!pressed && hovered) {
-			buttonPositionMotion.impulse(rem(-0.05));
-			buttonPositionMotion.spring(rem(-0.5), springs.bubbly);
+			buttonPositionMotion.impulse(-px(1));
+			buttonPositionMotion.spring(-px(8), springs.bubbly);
 		}
 	}, [pressed]);
 
 	return (
 		<frame BackgroundTransparency={1} AnchorPoint={anchorPoint} Size={size} Position={position}>
 			<textbutton
-				key="button"
 				FontFace={font}
 				Text={text}
 				TextColor3={textColor}
@@ -80,7 +81,7 @@ export function Button({
 					MouseButton1Up: () => setPressed(false),
 				}}
 			>
-				<uicorner key="button-corner" CornerRadius={new UDim(0, rem(1))} />
+				<uicorner CornerRadius={new UDim(0, px(16))} />
 				{children}
 			</textbutton>
 		</frame>

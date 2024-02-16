@@ -1,9 +1,9 @@
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 import { IS_PLUGIN } from "shared/constants";
 
 interface LayerProps {
 	displayOrder?: number;
-	children?: Roact.Children;
+	children?: React.ReactNode;
 }
 
 export function Layer({ displayOrder, children }: LayerProps) {
