@@ -23,9 +23,9 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
-		"@rbxts/pretty-react-hooks": "0.4.0-alpha.0",
-		"@rbxts/react": "0.1.0-alpha.1",
-		"@rbxts/react-roblox": "0.3.0-alpha.1",
+		"@rbxts/pretty-react-hooks": "^0.4.1",
+		"@rbxts/react": "^0.1.0",
+		"@rbxts/react-roblox": "^0.3.0",
 		"@rbxts/ripple": "^0.7.1",
 		"@rbxts/services": "^1.5.4"
 	}
